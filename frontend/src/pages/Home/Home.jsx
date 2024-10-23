@@ -1,23 +1,35 @@
+import axios from "axios";
 import "./Home.css"
 
-import React from "react";
-
-import imgHomeRegistra from '../../../images/img-home-registra.png';
-
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Home(){
+    const navigate = useNavigate()
+    const fetchUser = async () => {
+        try{
+            const token = localStorage.getItem('token')
+        const response = await axios.get('http://localhost:3000/auth/home', {
+            headers: {
+                "Authorization" : `Bearer ${token}`
+            }
+        })
+        if(response.status !== 201) {
+            navigate('/login')
+        }
+        } catch (err) {
+            navigate('/login')
+            console.log(err)
+        } 
+    }
+
+    useEffect(() => {
+        fetchUser()
+    }, [])
+
     return(
-        <div className="component">
-            <div className="caixaContentsHome">
-                <img src={imgHomeRegistra} alt="imgHomeRegistra" />
-                <h2>Monitoramento de ocorrências em sala</h2>
-                <p>"Registre ocorrências em sala de aula com facilidade. Obtenha uma visão detalhada por tipo de ocorrência, aluno(a) e turma. Além disso, gere relatórios completos, tanto individuais quanto agregados por grupos, para uma análise mais abrangente."</p>
-                <div className="caixaBtns">
-                    <Link className="btnLinkHome btnCad" to="/Register">Register</Link>
-                    <Link className="btnLinkHome btnLog" to="/Login"> Login</Link>
-                </div>
-            </div>
+        <div>
+            Home
         </div>
     )
 }

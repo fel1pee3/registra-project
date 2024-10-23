@@ -4,7 +4,7 @@ import "./Register.css";
 
 import logoRegistraBlue from '../../../images/logoRegistraBlue.png'
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function Register(){
@@ -16,6 +16,8 @@ export default function Register(){
         password: '',
     })
 
+    const navigate = useNavigate()
+
     const handleChanges = (e) => {
         setValues({...values, [e.target.name]:e.target.value})
     }
@@ -24,7 +26,9 @@ export default function Register(){
         e.preventDefault()
         try {
             const response = await axios.post('http://localhost:3000/auth/register', values)
-            console.log(response)
+            if(response.status === 201){
+                navigate('/login')
+            }
         } catch(err) {
             console.log(err)
         }
