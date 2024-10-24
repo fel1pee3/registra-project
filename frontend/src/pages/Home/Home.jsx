@@ -9,7 +9,7 @@ export default function Home(){
     const fetchUser = async () => {
         try{
             const token = localStorage.getItem('token')
-        const response = await axios.get('http://localhost:3000/auth/home', {
+            const response = await axios.get('http://localhost:3000/auth/home', {
             headers: {
                 "Authorization" : `Bearer ${token}`
             }

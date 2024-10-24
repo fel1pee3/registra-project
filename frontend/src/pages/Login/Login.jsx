@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Login.css";
+import "../Register/Authentication.css";
 
 import logoRegistraBlue from '../../../images/logoRegistraBlue.png'
 
@@ -35,9 +35,9 @@ export default function Login(){
 
     return(
         <div className="component">
-            <div className="caixaContentsRegister">
+            <div className="caixaAuthentication">
 
-                <div className="logo"><img src={logoRegistraBlue} alt="logo registra blue" /><h1>REGISTRA</h1></div>
+                <div className="caixaLogo"><img src={logoRegistraBlue} alt="logo registra blue" /><h1>REGISTRA</h1></div>
 
                 <form onSubmit={handleSubmit} className="formRegister">
 
@@ -50,13 +50,13 @@ export default function Login(){
                         <label className="user-label" >Senha</label>
                     </div>
 
-                    <button className="btnRegister">Submit</button>
+                    <button className="btnAuthentication">Submit</button>
 
                 </form>
 
-                <div className="linkRegisterParaLogin">
+                <div className="linkAuthentication">
                     <p>Don't have account?</p>
-                    <Link className="linkLog" to="/Register">Singup</Link>
+                    <Link className="linkAuth" to="/Register">Register</Link>
                 </div>
             </div>
         </div>

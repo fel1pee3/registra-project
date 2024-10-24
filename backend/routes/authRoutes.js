@@ -67,7 +67,9 @@ router.get('/home', verifyToken, async (req, res) => {
         const db = await connectToDatabase()
         const [rows] = await db.query('SELECT * FROM users WHERE id = ?', [req.userId])
         if(rows.length > 0) {
-            return res.status(409).json({message : "user already existed"})
+            return res.status(200).json({user: rows[0]})
+        } else {
+            return res.status(404).json({message: "user not found"})
         }
 
         return res.status(201).json({user: rows[0]})

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./Register.css";
+import "./Authentication.css";
 
 import logoRegistraBlue from '../../../images/logoRegistraBlue.png'
 
@@ -36,9 +36,9 @@ export default function Register(){
 
     return(
         <div className="component">
-            <div className="caixaContentsRegister">
+            <div className="caixaAuthentication">
 
-                <div className="logo"><img src={logoRegistraBlue} alt="logo registra blue" /><h1>REGISTRA</h1></div>
+                <div className="caixaLogo"><img src={logoRegistraBlue} alt="logo registra blue" /><h1>REGISTRA</h1></div>
 
                 <form onSubmit={handleSubmit} className="formRegister">
 
@@ -59,13 +59,13 @@ export default function Register(){
                         <label className="user-label" >Senha</label>
                     </div>
 
-                    <button className="btnRegister">Submit</button>
+                    <button className="btnAuthentication">Register</button>
 
                 </form>
 
-                <div className="linkRegisterParaLogin">
+                <div className="linkAuthentication">
                     <p>Already have account?</p>
-                    <Link className="linkLog" to="/Login">Login</Link>
+                    <Link className="linkAuth" to="/Login">Login</Link>
                 </div>
             </div>
         </div>
